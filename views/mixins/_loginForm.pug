@@ -1,0 +1,8 @@
+mixin loginForm()
+    form.form(action="/login" method="POST")
+        h2 Giriş
+        label(for="email") Email Adresi
+        input(type="email" name="email")
+        label(for="password") Şifre
+        input(type="password" name="password")
+        input.button(type="submit" value="Giriş →")

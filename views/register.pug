@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .inner
+    h2= title
+    form.form(action="/register" method="POST")
+      h2 Kayıt
+      label(for="name") İsim
+      input(type="text" name="name" required)
+      label(for="email") Email
+      input(type="email" name="email" required)
+      label(for="password") Şifre
+      input(type="password" name="password" required)
+      label(for="password-confirm") Şifre Tekrar
+      input(type="password" name="password-confirm" required)
+      input.button(type="submit" value="Kayıt →")

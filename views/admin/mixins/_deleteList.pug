@@ -1,0 +1,32 @@
+mixin deleteList(stores = {})
+    table.table2 
+        thead 
+            td Sıra 
+            td Foto
+            td Mekan İsmi
+            td İşlem
+            td İşlem
+            td Aktif
+        each store, i in stores 
+            tr(id=store.slug) 
+                td #{i + 1}
+                td
+                    a(href=`/store/${store.slug}`)
+                        img(width=75 src=`/uploads/${store.photo || 'store.png'}` alt=store.name)
+                td: a(href=`/store/${store.slug}`)= store.name
+                td 
+                    a(href=`/stores/${store._id}/edit`)
+                        input.button(type="submit" value="Düzenle →")
+                td 
+                    form.delete1(method="POST" action=`/admin/${store._id}/delete` id=store.slug)
+                        a()
+                            input.button1(type="submit" id=store._id value=" Geri Al →")
+                td
+                    .tag.tag__choice 
+                        input(
+                        type="checkbox" 
+                        id="aktif" 
+                        value="Aktif" name="tags"
+                        checked
+                        )
+                        label(for="aktif") Aktif

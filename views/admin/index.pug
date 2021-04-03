@@ -1,0 +1,11 @@
+extends adminLayout 
+
+include mixins/_storeList
+
+block content
+    .inner
+        h2= title
+        a(href=href)
+            input.button(type="button" value=button id="listed")
+        #store_list
+            +storeList(stores, value)

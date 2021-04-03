@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .inner
+    h2= title
+    form.form(action=`/business/${user._id || ''}` method="POST")
+      h2 İşletme Bilgileri
+      label(for="name") İşletme İsmi
+      input(type="text" name="placesName" required)
+      label(for="placesNo") İşletme Telefon Numarası
+      input(type="text" name="placesNo" required)
+      h2 İşletme Sahibi Bilgileri
+      label(for="ownerName") İşletme Sahibinin İsmi
+      input(type="text" name="ownerName" required)
+      label(for="ownerSurname") İşletme Sahibinin Soyadı
+      input(type="text" name="ownerSurname" required)
+      label(for="ownerNo") İşletme Sahibinin Telefon Numarası
+      input(type="text" name="ownerNo" required)
+      input.button(type="submit" value="Başvur →")

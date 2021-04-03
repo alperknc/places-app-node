@@ -1,0 +1,36 @@
+extends adminLayout 
+
+block content
+    .inner
+        h2= title
+        table.table1 
+            thead 
+                td Fotoğraf 
+                td İsim
+                td Yorum
+                td Puan
+                td Mekan
+                td İşlem
+                td Zaman
+            each review, i in reviews 
+                tr() 
+                    td: img.avatar(src=review.author.gravatar + '&d=retro') 
+                    td= review.author.name
+                    td= review.text
+                    td= review.rating
+                    td= review.store
+                        //a(href=`/stores/${user._id}/edit`)
+                            input.button(type="submit" value="Düzenle →")
+                    td
+                        .tag.tag__choice 
+                            input(
+                            type="checkbox" 
+                            id="aktif" 
+                            value="Aktif" name="tags"
+                            checked
+                            )
+                            label(for="aktif") Onaylı
+                        //form.delete(method="POST" action=`/admin/${user._id}/delete`)
+                            a()
+                                input.button1(type="submit" id=user._id value=`${user || 'Sil →'}`)
+                    td= h.moment(review.created).fromNow()

@@ -1,0 +1,25 @@
+extends adminLayout 
+
+block content
+    .inner
+        h2= title
+        table.table1 
+            thead 
+                td Sıra
+                td Mekan İsmi
+                td Mekan No
+                td Sahip İsim Soyisim
+                td Sahip No
+                td Onay
+                td Zaman
+            each business, i in businesses 
+                tr() 
+                    td #{i + 1}
+                    td= business.placesName
+                    td= business.placesNo
+                    td= business.ownerName + " " + business.ownerSurname
+                    td= business.ownerNo
+                    td
+                        form.business(method="POST" action=`/admin/${business._id}/confirm`)
+                           input.button1(type="submit" id=business._id value='Onayla →')
+                    td= h.moment(business.created).fromNow()

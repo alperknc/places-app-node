@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+    .inner
+        form.form(method="POST")
+            h2 Şifreni Yenile 
+            label(for="password") Şifre
+            input(type="password" name="password")
+            label(for="password-confirm") Şifre Tekrar
+            input(type="password" name="password-confirm")
+            input.button(type="submit" value="Şifreni Yenile")

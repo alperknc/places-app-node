@@ -1,0 +1,47 @@
+extends adminLayout 
+
+block content
+    .inner
+        h2= title
+        table.table1 
+            thead 
+                td Sıra 
+                td İsim
+                td Email
+                td İşlem
+                td İşletme Hesabı
+                td Yetki
+            each user, i in users 
+                tr() 
+                    td: img.avatar(src=user.gravatar + '&d=retro') 
+                    td= user.name
+                    td= user.email
+                    td 
+                        .tag.tag__choice 
+                            input(
+                            type="checkbox" 
+                            id="active" 
+                            value="Aktif" name="tags"
+                            checked
+                            )
+                            label(for="active") Aktif
+                    td
+                        form.isBusiness(method="GET" action=`/admin/${user._id}/setBusiness`)
+                            .tag.tag__choice 
+                                    input(
+                                    type="checkbox" 
+                                    id="business" 
+                                    value="Aktif" name="business"
+                                    checked=user.isBusiness
+                                    )
+                                    label(for="business") Onaylı
+                    td
+                        form.isAdmin(method="GET" action=`/admin/${user._id}/setAdmin`)
+                            .tag.tag__choice 
+                                    input(
+                                    type="checkbox" 
+                                    id="admin" 
+                                    value="Aktif" name="admin"
+                                    checked=user.isAdmin
+                                    )
+                                    label(for="admin") Admin

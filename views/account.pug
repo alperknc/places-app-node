@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+    .inner 
+        h2 Profil Düzenle 
+        if (!user.isBusiness)
+            form.delete()
+            a(href="/Business" id=user._id)
+                input.button1(type="submit" value="İşletme hesabı için başvur! →")
+        form(action="/account" method="POST")
+            label(for="name") İsim 
+            input(type="text" name="name" value=user.name)
+            label(for="email") Email Adresi 
+            input(type="email" name="email" value=user.email)
+            input.button(type="submit" value="Güncelle")
