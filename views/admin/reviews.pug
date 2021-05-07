@@ -22,15 +22,13 @@ block content
                         //a(href=`/stores/${user._id}/edit`)
                             input.button(type="submit" value="Düzenle →")
                     td
-                        .tag.tag__choice 
-                            input(
-                            type="checkbox" 
-                            id="aktif" 
-                            value="Aktif" name="tags"
-                            checked
-                            )
-                            label(for="aktif") Onaylı
-                        //form.delete(method="POST" action=`/admin/${user._id}/delete`)
-                            a()
-                                input.button1(type="submit" id=user._id value=`${user || 'Sil →'}`)
+                        form.isActive(method="GET" action=`/admin/${review._id}/setReview`)
+                            .tag.tag__choice 
+                                input(
+                                type="checkbox" 
+                                id="isActive" 
+                                value="Aktif" name="isActive"
+                                checked=review.isActive
+                                )
+                                label(for="isActive") Onaylı
                     td= h.moment(review.created).fromNow()

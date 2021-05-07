@@ -21,3 +21,13 @@ export function confirm(e) {
         }))
         .catch(console.error);
 }
+
+export function setActive(e) {
+    e.preventDefault();
+    axios
+        .get(this.action)
+        .then(axios.get("/admin/reviews").then(res => {
+            location.reload();
+        }))
+        .catch(console.error);
+}

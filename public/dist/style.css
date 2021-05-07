@@ -19,6 +19,9 @@ body {
     .inner {
       padding: 2rem; } }
 
+.content {
+  visibility: hidden; }
+
 html {
   box-sizing: border-box; }
 
@@ -1142,5 +1145,56 @@ pre.error {
   background: white;
   line-height: 3;
   white-space: pre-line; }
+
+.loader {
+  -ms-flex-align: center;
+      align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  height: 70vh;
+  overflow: hidden; }
+
+.gegga {
+  width: 0; }
+
+.snurra {
+  filter: url(#gegga); }
+
+.stopp1 {
+  stop-color: #f700a8; }
+
+.stopp2 {
+  stop-color: #ff8000; }
+
+.halvan {
+  animation: Snurra1 10s infinite linear;
+  stroke-dasharray: 180 800;
+  fill: none;
+  stroke: url(#gradient);
+  stroke-width: 23;
+  stroke-linecap: round; }
+
+.strecken {
+  animation: Snurra1 3s infinite linear;
+  stroke-dasharray: 26 54;
+  fill: none;
+  stroke: url(#gradient);
+  stroke-width: 23;
+  stroke-linecap: round; }
+
+.skugga {
+  filter: blur(5px);
+  opacity: 0.3;
+  position: absolute;
+  -ms-transform: translate(3px, 3px);
+      transform: translate(3px, 3px); }
+
+@keyframes Snurra1 {
+  0% {
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dashoffset: -403px; } }
 
 /*# sourceMappingURL=style.css.map*/

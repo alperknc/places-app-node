@@ -50,7 +50,7 @@ exports.getStores = async (req, res) => {
     const limit = 6;
     const skip = (page * limit) - limit;
     const storesPromise = await Store
-        .find()
+        .find({ isDeleted: false })
         .skip(skip)
         .limit(limit)
         .sort({ created: 'desc' });

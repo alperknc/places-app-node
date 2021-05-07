@@ -5,8 +5,9 @@ import autocomplete from './modules/autocomplete';
 import typeAhead from './modules/typeAhead';
 import makeMap from './modules/map';
 import ajaxHeart from './modules/heart';
-import { adminList, confirm } from './modules/adminList';
+import { adminList, confirm, setActive } from './modules/adminList';
 import { isAdmin, isBusiness } from './modules/adminUser';
+import { loading } from './modules/loading';
 
 autocomplete($('#address'), $('#lat'), $('#lng'));
 
@@ -28,3 +29,12 @@ setBusiness.on('change', isBusiness)
 
 const setAdmin = $$('form.isAdmin');
 setAdmin.on('change', isAdmin)
+
+const setReview = $$('form.isActive');
+setReview.on('change', setActive)
+
+const stores = $('.content');
+const loadingCl = $('.loader');
+stores.addEventListener("load", loading(stores, loadingCl));
+
+//loading($('.content .inner'))

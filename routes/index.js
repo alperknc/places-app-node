@@ -12,7 +12,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 router.get('/', catchErrors(storeController.getStores));
 router.get('/stores', catchErrors(storeController.getStores));
 router.get('/stores/page/:page', catchErrors(storeController.getStores));
-router.get('/add', authController.isLoggedIn, storeController.addStore);
+router.get('/add', authController.isBusiness, storeController.addStore);
 router.post('/add',
     storeController.upload, 
     catchErrors(storeController.resize),  
@@ -63,15 +63,16 @@ router.post('/business/:id', catchErrors(userController.addBusiness)
 
 const fs = require('fs');
 // ADMIN
-router.get('/admin', authController.isLoggedIn, catchErrors(adminController.getStores));
-router.get('/admin/deleted', authController.isLoggedIn, catchErrors(adminController.getStores));
-router.get('/admin/users', authController.isLoggedIn, catchErrors(adminController.getUsers));
-router.get('/admin/reviews', authController.isLoggedIn, catchErrors(adminController.getReviews));
-router.get('/admin/:id/delete', catchErrors(adminController.deleteStore));
-router.get('/admin/business', authController.isLoggedIn, adminController.getBusiness)
-router.get('/admin/:id/confirm', catchErrors(adminController.confirmBusiness));
-router.get('/admin/:id/setBusiness', catchErrors(adminController.setBusiness));
-router.get('/admin/:id/setAdmin', catchErrors(adminController.setAdmin));
+router.get('/admin', authController.isAdmin, catchErrors(adminController.getStores));
+router.get('/admin/deleted', authController.isAdmin, catchErrors(adminController.getStores));
+router.get('/admin/users', authController.isAdmin, catchErrors(adminController.getUsers));
+router.get('/admin/reviews', authController.isAdmin, catchErrors(adminController.getReviews));
+router.get('/admin/:id/delete', authController.isAdmin, catchErrors(adminController.deleteStore));
+router.get('/admin/business', authController.isAdmin, adminController.getBusiness)
+router.get('/admin/:id/confirm', authController.isAdmin, catchErrors(adminController.confirmBusiness));
+router.get('/admin/:id/setBusiness', authController.isAdmin, catchErrors(adminController.setBusiness));
+router.get('/admin/:id/setAdmin', authController.isAdmin, catchErrors(adminController.setAdmin));
+router.get('/admin/:id/setReview', authController.isAdmin, catchErrors(adminController.setReview));
 
 //API
 router.get('/api/search', catchErrors(storeController.searchStores));

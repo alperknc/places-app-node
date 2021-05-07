@@ -33,10 +33,6 @@ exports.getStores = async (req, res) => {
     res.render('admin/index', { title: 'Mekânlar', button: 'Silinenlere Git →', href: "/admin/deleted", stores });
 }
 
-exports.getDeleted = async (req, res) => {
-    
-}
-
 exports.deleteStore = async (req, res) => {
     const store = await Store.findById({ _id: req.params.id });
     const isDeleted = store.isDeleted ? 'false' : 'true';
@@ -132,4 +128,10 @@ exports.setAdmin = async (req, res) => {
     const user = await User.findById({ _id: req.params.id });
     const isAdmin = user.isBusiness ? 'false' : 'true';
     const userUpdate = await User.findByIdAndUpdate({ _id: req.params.id }, { isAdmin });
+}
+
+exports.setReview = async (req, res) => {
+    const review = await Review.findById({ _id: req.params.id });
+    const isActive = review.isActive ? 'false' : 'true';
+    const reviewUpdate = await Review.findByIdAndUpdate({ _id: req.params.id }, { isActive });
 }

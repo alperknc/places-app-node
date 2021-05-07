@@ -39,6 +39,10 @@ const storeSchema = new mongoose.Schema({
         ref: 'User',
         required: 'Kullanıcı kısmı boş olamaz!'
       },
+    created: {
+        type: Date,
+        default: Date.now
+    },
     isDeleted: {
         type: Boolean,
         default: false
@@ -87,7 +91,7 @@ storeSchema.statics.getTopStores = function() {
     return this.aggregate([
         { $lookup: {from: 'reviews', localField: '_id', foreignField: 'store', as: 'reviews'} },
         //filter 2 reviews or more
-        { $match: { 'reviews.1': { $exists: true } } },
+        { $match: { 'reviews.0': { $exists: true } } },
         //average reviews field
         { $project: {
             photo: '$$ROOT.photo',

@@ -94,3 +94,21 @@ exports.update = async (req, res) => {
     req.flash('success', 'Şifre başarıyla değiştirildi!');
     res.redirect('/');
 }
+
+exports.isAdmin = (req, res, next) => {
+    if(req.user.isAdmin) {
+        next();
+        return;
+    }
+    req.flash('error', 'Yetki yetersiz!');
+    res.redirect('/');
+}
+
+exports.isBusiness = (req, res, next) => {
+    if(req.user.isBusiness) {
+        next();
+        return;
+    }
+    req.flash('error', 'Yetki yetersiz!');
+    res.redirect('/');
+}

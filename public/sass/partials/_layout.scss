@@ -15,9 +15,14 @@ body {
 }
 
 .inner {
+  //visibility:hidden;
   max-width:900px;
   margin: 0 auto;
   @media all and (max-width: 900px) {
     padding: 2rem;
   }
+}
+
+.content {
+  visibility:hidden;
 }
