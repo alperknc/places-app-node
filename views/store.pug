@@ -2,7 +2,6 @@ extends layout
 
 include mixins/_reviewForm
 include mixins/_review
-include mixins/_storeDetails
 
 block content
     .single 
@@ -21,17 +20,6 @@ block content
                     li.tag 
                         a.tag__link(href=`/tags/${tag}`)
                             span.tag__text ##{tag}
-        
-        //if details
-        .review 
-            .review__header
-                .review__author
-                    img.avatar(src=`/uploads/${store.photo || 'store.png'}`)
-                    p= store.name
-                .review__stars 7/24 Açık
-                time.review__time(datetime=store.created)= h.moment(store.created).fromNow()
-            .review__body
-                +storeDetails(store)
 
         if user 
             +reviewForm(store)
